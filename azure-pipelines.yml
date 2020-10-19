@@ -20,7 +20,6 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-steps:
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -32,7 +31,7 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     tasks: 'build'
-steps:
+
 - task: Ant@1
   inputs:
     workingDirectory: ''
@@ -42,12 +41,12 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-steps:
+
 - script: |
     echo Starting the build
     mvn package
   displayName: 'Build with Maven'
-steps:
+
 - task: ShellScript@2
   inputs:
     scriptPath: 'build.sh'
